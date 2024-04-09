@@ -25,7 +25,9 @@ def run():
 
 if __name__ == '__main__':
     print("welcome to the math quiz")
-    players = input("How many people do you want to play with")
+    players = input("How many people do you want to play with (press enter for 1?")
+    if players == "":
+        players = 1
     questions = input("How many questions do you want to do (press enter for 10)? \n")
     if questions == "":
         questions = 10
