@@ -5,8 +5,8 @@ def run():
     counter = 0
     start = datetime.datetime.now()
     for x in range(int(questions)):
-        number1 = random.randint(1,9)
-        number2 = random.randint(1,9)
+        number1 = random.randint(2,9)
+        number2 = random.randint(2,9)
         question = input(f'''#{x + 1}: What is ''' + str(number1) + "x" + str(number2) + "? \n")
         answer = number1*number2
         #print('answer' + str(answer))
@@ -20,7 +20,7 @@ def run():
     end = datetime.datetime.now()
     totaltime = end - start
     print(f"your total time was {totaltime}")
-    return counter
+    return counter, totaltime
 
 
 if __name__ == '__main__':
@@ -33,7 +33,8 @@ if __name__ == '__main__':
         questions = 10
     scores = []
     for x in range(int(players)):
-        score = run()
-        print(f"""You scored {score} points!""")
-        scores.append(score)
-    print("Player " + str(scores.index(max(scores))+1) + " won the game!")
+        score, totaltime = run()
+        print(f"""You scored {score} points! You took {totaltime} seconds""")
+        scores.append({"player": x, "score": score, "totaltime": totaltime})
+    print(f "Final Scores: {scores}")
+    # print("Player " + str(scores.index(max(scores))+1) + " won the game!")
