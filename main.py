@@ -22,6 +22,15 @@ def run():
     print(f"your total time was {totaltime}")
     return counter, totaltime
 
+def find_winners(scores):
+    winners = []
+    highest_score = 0
+    for score in scores:
+        if score["score"] >= highest_score:
+            winners.append(score)
+            highest_score = score["score"]
+            print(f"Winner is {winners}")
+    return winners
 
 if __name__ == '__main__':
     print("welcome to the math quiz")
@@ -36,5 +45,8 @@ if __name__ == '__main__':
         score, totaltime = run()
         print(f"""You scored {score} points! You took {totaltime} seconds""")
         scores.append({"player": x, "score": score, "totaltime": totaltime})
-    print(f "Final Scores: {scores}")
-    # print("Player " + str(scores.index(max(scores))+1) + " won the game!")
+    print(f"Final Scores: {scores}")
+    winners = find_winners(scores)
+    if len(winners) > 1:
+        print("there was a tie {winners}")
+    print(f"Player {winners} won the game!")
